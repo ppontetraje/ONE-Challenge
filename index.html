@@ -4,9 +4,67 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <title>One Challenge</title>
 </head>
+
 <body>
+    <header>
+        <div class="nav">
+            <img src="./assets/images/Logo.png" alt="">
+        </div>
+    </header>
+    <div class="container">
+        <div class="input__text">
+            <div class="text">
+                <textarea class="input__text_encrypt" name="" id="texto" cols="30" rows="10">Ingrese texto aquí</textarea>
+            </div>
+            <div class="buttons">
+                <button>Encriptar</button>
+                
+            </div>
+
+        </div>
+
+        <div class="output__text">
+            <textarea class="output__text_decrypt" name="" id="" cols="30" rows="10"></textarea>
+        </div>
+    </div>
+
+    <script src="./js/main.js"> </script>
+    <script>
+        /*var textarea= document.querySelector("textarea");
+        console.log(textarea.value);
+        */
+        var button = document.querySelector("button");
+
+        button.onclick = encrypt;
+
+
+const vowels = ['a','e','i','o','u'];
+const replaceWord =['ai','enter','imes','ober','ufat'];
+
+function encrypt(){
+    let newWord ="";
+    let indexVowel =0;
+    let str = document.querySelector(".input__text_encrypt").value;
+
     
+    for (let index = 0; index < str.length; index++) {
+        currentVowel = str.charAt(index);
+        indexVowel = vowels.indexOf(currentVowel);
+
+        if (indexVowel != -1){
+            newWord += replaceWord[indexVowel];
+        }
+        else{
+            newWord += currentVowel;
+        }       
+    }
+    var output= document.querySelector(".output__text_decrypt");
+    console.log(newWord);
+    output.value= newWord; 
+}
+    </script>
 </body>
 </html>
