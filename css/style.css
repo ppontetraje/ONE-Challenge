@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700&display=swap');
+
+*{
+    font-family: 'Inter';
+}
+.main{
+    display: flex;
+    flex-direction: center;
+    justify-content: center;
+}
+.container{
+    border: 1px solid;
+    width: 80%;
+    height: 600px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.input__text{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.input__text_encrypt{
+    border: none;
+    display: block;
+    font-weight: 400;
+    font-size: 32px;
+    width: 680px;
+    resize: none;
+    color: #0A3871;
+}
+
+.buttons{
+    display: flex;
+    justify-content: row;
+    gap: 30px;
+}
+.output__text{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    text-align: center;
+}
+.prueba{
+display: none;
+height: 100%;
+flex-direction: column;
+justify-content: space-around;
+
+text-align: center;
+}
+.output__text_decrypt{
+    border: none;
+    width: 336px;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 150%;
+    resize: none;
+    color: #495057;
+}
+
+.div__no__output{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.title__output{
+    color: #0A3871;
+    font-weight: 700;
+}
+.p__output{
+color:#495057;
+font-weight: 400;
+}
+
+.button__encrypt{
+    color: white;
+padding: 24px;
+gap: 8px;
+
+width: 328px;
+height: 67px;
+
+/* Dark blue/dark-blue-300 */
+
+background: #0A3871;
+border-radius: 24px;
+
+/* Inside auto layout */
+
+
+}
+.button__decrypt3{
+    box-sizing: border-box;
+
+/* Auto layout */
+
+padding: 24px;
+
+width: 328px;
+height: 67px;
+
+/* Light gray */
+
+background: #D8DFE8;
+/* Dark blue/dark-blue-300 */
+
+border: 1px solid #0A3871;
+border-radius: 24px;
+
+/* Inside auto layout 
+
+flex: none;
+order: 1;
+flex-grow: 0;*/
+}
+textarea{
+    height: 65vh;
+}
+textarea:focus-visible{
+    outline: none;
+}
+
