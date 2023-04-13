@@ -5,97 +5,81 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
-    <title>One Challenge</title>
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <title>Document</title>
 </head>
 
 <body>
     <header>
-        <div class="nav">
-            <img src="./assets/images/Logo.png" alt="">
+        <div class="navbar">
+            <img src="./assets/images/Logo.png" alt="Logo">
         </div>
     </header>
-    <main class="main">
-        <div class="container">
-            <div class="input__text">
-                <div class="text">
-                    <textarea class="input__text_encrypt" value="Ingrese texto aquí"></textarea>
-                </div>
 
+    <main>
+        <div class="cont">
+            <div class="cont__primary">
+                <div class="text">
+                    <textarea class="text__input" name="inputText" id="inputText">Ingrese texto aquí</textarea>
+                </div>
                 <div class="buttons">
-                    <button class="button__encrypt">Encriptar</button>
-                    <button class="button__decrypt3">Desencriptar</button>
+                    <button class="encrypt">Encriptar</button>
+                    <button class="decrypt">Desencriptar</button>
                 </div>
 
             </div>
-
-
-
-            <div class="output__text">
-
-                <div class="div__no__output" id="no__output">
-                    <img id="myIMG" class="" src="./assets/images/Muñeco.png" alt="">
-                    <h1 class="title__output">Ningun mensaje fue encontrado</h1>
-                    <p class="p__output">Ingresa texto que desees encriptar o desencriptar</p>
+            <div class="cont__secondary">
+                <div class="no__message" id="no__message">
+                    <img class="msg__img" src="./assets/images/Muñeco.png" alt="">
+                    <h1 class="msg__title">Ningun mensaje fue encontrado</h1>
+                    <p class="msg__p">Ingrese el texto que desea encriptar o desencriptar</p>
                 </div>
-                <div class="prueba" id ="text__decrypted">
-                    <textarea class="output__text_decrypt"  ></textarea>
-                    <button class="button__decrypt3 button__copiar">Copiar</button>
+                <div class="output__message" id="output__message">
+                    <div class="text">
+                        <textarea class="text__output text__input" name="outputText" id="outputText">
+                        </textarea>
+                    </div>
+                    <div class="buttons">
+                        <button class="decrypt copiar">Copiar</button>
+                    </div>
                 </div>
- 
             </div>
         </div>
     </main>
 
-
-    <script src="./js/main.js"> </script>
     <script>
-        /*var textarea= document.querySelector("textarea");
-        console.log(textarea.value);
-        */
-
-        var button = document.querySelector(".button__encrypt");
-        button.onclick = encrypt;
-
-        var button2 = document.querySelector(".button__decrypt3");
-        var textToDecrypt = document.querySelector(".output__text_decrypt").value;
-        button2.onclick = decrypt;
-
-        var button3= document.querySelector(".button__copiar");
-        button3.onclick = copiar;
-
-        function copiar(){
-            var text = document.querySelector(".output__text_decrypt").value;
-            navigator.clipboard.writeText(text).then(function() {
-            console.log('Async: Copying to clipboard was successful!');
-            }, function(err) {
-        console.error('Async: Could not copy text: ', err);
-        });
-
-        }
-        
-        function noOutput() {
-            let decrypt = document.querySelector(".output__text_decrypt").value;
-            console.log(decrypt.length);
-            if (decrypt.length != 0) {
-                document.getElementById("no__output").style.display = "none";
-                console.log("No entro");
-                document.getElementById("text__decrypted").style.display = "initial";
-            } else {
-                document.getElementById("no__output").style.display = "block";
-                console.log("si entro");
-                document.getElementById("text__decrypted").style.display = "none";
-            }
-        }
-
 
         const vowels = ['a', 'e', 'i', 'o', 'u'];
         const replaceWord = ['ai', 'enter', 'imes', 'ober', 'ufat'];
 
+        var button = document.querySelector(".encrypt");
+        button.onclick = encrypt;
+
+        var button2 = document.querySelector(".decrypt");
+        button2.onclick = decrypt;
+
+        var button3 = document.querySelector(".copiar");
+        button3.onclick = copiar;
+
+
+        function noOutput() {
+            let decrypt = document.querySelector(".text__output").value;
+            console.log(decrypt.length);
+            if (decrypt.length != 0) {
+                document.getElementById("no__message").style.display = "none";
+                console.log("No entro");
+                document.getElementById("output__message").style.display = "flex";
+            } else {
+                document.getElementById("no__message").style.display = "flex";
+                console.log("si entro");
+                document.getElementById("output__message").style.display = "none";
+            }
+        }
         function encrypt() {
             let newWord = "";
             let indexVowel = 0;
-            let str = document.querySelector(".input__text_encrypt").value;
+            let str = document.querySelector(".text__input").value;
 
             for (let index = 0; index < str.length; index++) {
                 currentVowel = str.charAt(index);
@@ -108,14 +92,14 @@
                     newWord += currentVowel;
                 }
             }
-            var output = document.querySelector(".output__text_decrypt");
+            var output = document.querySelector(".text__output");
             output.value = newWord;
             noOutput();
         }
 
+
         function decrypt() {
-            let desafio = document.querySelector(".input__text_encrypt").value;
-            //let desafio = "fenterlimescimesdaidenters poberr enternfrenterntair enterstenter dentersaifimesober y haibenterrlober cobernclufatimesdober cobern enterximestober!"
+            let desafio = document.querySelector(".text__input").value;
             let arrayWords = desafio.split(" ");
             let currentWord = "";
             let newWord = "";
@@ -125,12 +109,12 @@
 
                 for (let j = 0; j < currentWord.length; j++) {
                     currentVowel = currentWord.charAt(j);
-                    indexVowel = vowels2.indexOf(currentVowel);
+                    indexVowel = vowels.indexOf(currentVowel);
 
                     if (indexVowel != -1) {
-                        if (currentWord.slice(j, j + replaceWord2[indexVowel].length) == replaceWord2[indexVowel]) {
-                            newWord += vowels2[indexVowel];
-                            j += replaceWord2[indexVowel].length - 1;
+                        if (currentWord.slice(j, j + replaceWord[indexVowel].length) == replaceWord[indexVowel]) {
+                            newWord += vowels[indexVowel];
+                            j += replaceWord[indexVowel].length - 1;
                         }
                         else {
                             newWord += currentVowel;
@@ -142,17 +126,27 @@
 
                 }
 
-                if(index == arrayWords.length-1){
+                if (index == arrayWords.length - 1) {
                     newWord += "";
-                }else{
+                } else {
                     newWord += " ";
                 }
             }
-            var output = document.querySelector(".output__text_decrypt");
+            var output = document.querySelector(".text__output");
             output.value = newWord;
             noOutput();
         }
 
+
+        function copiar() {
+            var text = document.querySelector(".text__output").value;
+            navigator.clipboard.writeText(text).then(function () {
+                console.log('Async: Copying to clipboard was successful!');
+            }, function (err) {
+                console.error('Async: Could not copy text: ', err);
+            });
+
+        }
     </script>
 </body>
 
